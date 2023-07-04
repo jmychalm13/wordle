@@ -19,11 +19,17 @@ guess_arr = guess.split("")
 # KEY - incorrect = R correct = G correct but in wrong spot = Y
 return_arr = []
 
-# comparing arrays
-guess_arr.each do |letter|
-  word_arr.each do |letter1|
-    if letter == letter1
-      puts "I ran"
-    end
+# comparing arrays and returning result as array
+index = 0
+5.times do
+  if word_arr[index] == guess_arr[index]
+    return_arr << "G"
+  elsif word_arr.include?(guess_arr[index])
+    return_arr << "Y"
+  else
+    return_arr << "R"
   end
+  index += 1
 end
+
+pp return_arr
