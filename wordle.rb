@@ -1,3 +1,4 @@
+# https://random-word-api.herokuapp.com/word?length=5
 # answer word
 # todo: find an API to generate random word
 word = "world"
@@ -18,6 +19,10 @@ until guesses == 0
   # splitting guess into array for camparison
   guess_arr = guess.split("")
 
+  if guess_arr == word_arr
+    puts "You win!!!!"
+    break
+  end
   # KEY - incorrect = R correct = G correct but in wrong spot = Y
   return_arr = []
   # comparing arrays and returning result as array
@@ -32,6 +37,7 @@ until guesses == 0
     end
     index += 1
   end
+
   guesses -= 1
 
   puts guess_arr.join(" ** ").upcase
