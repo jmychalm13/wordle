@@ -18,7 +18,7 @@ guess_arr = guess.split("")
 # feedback to return to user letting them know what is correct
 # KEY - incorrect = R correct = G correct but in wrong spot = Y
 return_arr = []
-
+guesses = 5
 # comparing arrays and returning result as array
 index = 0
 5.times do
@@ -31,5 +31,8 @@ index = 0
   end
   index += 1
 end
+guesses -= 1
 
-pp return_arr
+puts guess_arr.join(" ** ").upcase
+puts return_arr.join(" ** ")
+puts "You have #{guesses} guesses remaining."
