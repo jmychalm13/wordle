@@ -1,0 +1,2 @@
+# heroku random word API which I do not like
+GET https://random-word-api.herokuapp.com/word?length=5

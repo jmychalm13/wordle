@@ -1,8 +1,13 @@
-# https://random-word-api.herokuapp.com/word?length=5
+require "http"
+system "clear"
+puts "Welcome to Wordle! Have fun"
+
+response = HTTP.get("https://random-word-api.herokuapp.com/word?length=5")
+
 # answer word
 # todo: find an API to generate random word
-word = "world"
-word_arr = word.split("")
+word = response.parse(:json)
+word_arr = word[0].split("")
 
 guesses = 5
 
@@ -43,4 +48,10 @@ until guesses == 0
   puts guess_arr.join(" ** ").upcase
   puts return_arr.join(" ** ")
   puts "You have #{guesses} guesses remaining."
+end
+
+if guess_arr != word_arr
+  puts "I'm sorry, you didn't win this time : ("
+  puts "The correct answer was: #{word[0]}"
+  puts "Please play again sometime."
 end
