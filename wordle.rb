@@ -1,14 +1,10 @@
-require "http"
 require "spicy-proton"
 system "clear"
 puts "Welcome to Wordle! Have fun"
 
-response = HTTP.get("https://random-word-api.herokuapp.com/word?length=5")
+word = Spicy::Proton.noun(length: 5)
 
-# answer word
-# todo: find an API to generate random word
-word = response.parse(:json)
-word_arr = word[0].split("")
+word_arr = word.split("")
 
 guesses = 5
 
@@ -55,6 +51,6 @@ end
 
 if guess_arr != word_arr
   puts "I'm sorry, you didn't win this time : ("
-  puts "The correct answer was: #{word[0]}"
+  puts "The correct answer was: #{word}"
   puts "Please play again sometime."
 end
