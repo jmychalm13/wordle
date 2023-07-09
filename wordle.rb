@@ -1,6 +1,7 @@
 require "spicy-proton"
 system "clear"
 puts "Welcome to Wordle! Have fun"
+puts "If you get a 'G' your letter is right and in the right spot, a 'Y' means it's correct but in the wrong spot, and a 'R' just means you're totally wrong."
 
 word = Spicy::Proton.noun(length: 5)
 puts word
@@ -33,6 +34,7 @@ until guesses == 0
     if word_arr[index] == guess_arr[index]
       return_arr << "G"
     elsif word_arr.include?(guess_arr[index])
+      # something here to account for double-correct
       return_arr << "Y"
     else
       return_arr << "R"
