@@ -34,7 +34,7 @@ until guesses == 0
     # todo: account for counting same letter twice HOW????
     if word_arr[index] == guess_arr[index]
       return_arr << "G"
-    elsif word_arr.include?(guess_arr[index])
+    elsif word_arr.include?(guess_arr[index]) && word_arr.count(guess_arr[index]) > 1
       # check count of letters against position
       return_arr << "Y"
     else
