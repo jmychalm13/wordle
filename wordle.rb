@@ -3,7 +3,7 @@ system "clear"
 puts "Welcome to Wordle! Have fun"
 
 word = Spicy::Proton.noun(length: 5)
-
+puts word
 word_arr = word.split("")
 
 guesses = 5
@@ -32,7 +32,7 @@ until guesses == 0
   5.times do
     if word_arr[index] == guess_arr[index]
       return_arr << "G"
-    elsif word_arr.include?(guess_arr[index]) && word_arr.count(guess_arr[index]) > 1
+    elsif word_arr.include?(guess_arr[index])
       return_arr << "Y"
     else
       return_arr << "R"
@@ -54,5 +54,5 @@ end
 if guess_arr != word_arr
   puts "I'm sorry, you didn't win this time : ("
   puts "The correct answer was: #{word}"
-  puts "Please play again sometime."
+  puts "Please play again."
 end
