@@ -3,6 +3,7 @@ system "clear"
 puts "Welcome to Wordle! Have fun"
 
 word = Spicy::Proton.noun(length: 5)
+pp word
 
 word_arr = word.split("")
 
@@ -46,7 +47,11 @@ until guesses == 0
 
   puts guess_arr.join(" ** ").upcase
   puts return_arr.join(" ** ")
-  puts "You have #{guesses} guesses remaining."
+  unless guesses == 1
+    puts "You have #{guesses} guesses remaining."
+  else
+    puts "You only have 1 guess left. Make it count ; )"
+  end
 end
 
 if guess_arr != word_arr
