@@ -1,6 +1,7 @@
 require "spicy-proton"
+require "colorize"
 system "clear"
-puts "Welcome to Wordle! Have fun"
+puts "Welcome to Wordle! Have fun".colorize(:magenta).colorize(:background => :light_blue)
 puts "If you get a 'G' your letter is right and in the right spot, a 'Y' means it's correct but in the wrong spot, and a 'R' just means you're totally wrong."
 
 word = Spicy::Proton.noun(length: 5)
