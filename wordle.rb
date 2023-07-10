@@ -2,7 +2,7 @@ require "spicy-proton"
 require "colorize"
 system "clear"
 puts "Welcome to Wordle! Have fun".colorize(:magenta).colorize(:background => :light_blue)
-puts "If you get a 'G' your letter is right and in the right spot, a 'Y' means it's correct but in the wrong spot, and a 'R' just means you're totally wrong."
+puts "If the letters are green, they're in the right spot. If the letters are yellow, it's the right letter, but not in that spot. If it's red, it's totally wrong."
 
 word = Spicy::Proton.noun(length: 5)
 puts word
@@ -27,18 +27,17 @@ until guesses == 0
     puts "You win!!!!"
     break
   end
-  # KEY - incorrect = R correct = G correct but in wrong spot = Y
   return_arr = []
   # comparing arrays and returning result as array
   index = 0
   5.times do
     if word_arr[index] == guess_arr[index]
-      return_arr << "G"
+      return_arr << guess_arr[index].upcase.colorize(:green)
     elsif word_arr.include?(guess_arr[index])
       # something here to account for double-correct
-      return_arr << "Y"
+      return_arr << guess_arr[index].upcase.colorize(:yellow)
     else
-      return_arr << "R"
+      return_arr << guess_arr[index].upcase.colorize(:red)
     end
     index += 1
   end
